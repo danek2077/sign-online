@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { userNumberChange } from "../../../../store/Slices/FirstSlice";
 type TodoNomPropsType = { chooseList: string[] };
 const TodoNomList: React.FC<TodoNomPropsType> = ({ chooseList }) => {
-  const { booleanUserChosen, setUserChosen } = chosenUserData();
+  const { booleanUserChosen } = chosenUserData();
   const dispatch = useDispatch();
   function func(key: number) {
     dispatch(userNumberChange(key + 1));

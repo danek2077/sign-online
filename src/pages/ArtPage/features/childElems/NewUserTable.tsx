@@ -3,31 +3,36 @@ import { UserListType } from "../types/typeArtPage";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import { useDispatch } from "react-redux";
-import { timeNow } from "../../../../store/Slices/FirstSlice";
+import { getTimeNow } from "../hooks/CustomArtPage";
 
 const NewUserTable: React.FC<{
-  valueInput: string;
+  valueInput: number | string;
   userList: UserListType;
 }> = ({ valueInput, userList }) => {
-  const userChosen = useSelector(
-    (root: RootState) => root.FirstSlice.userChosen
+  const selectedUser = useSelector(
+    (root: RootState) => root.FirstSlice.selectedUser
   );
-  const dispatch = useDispatch();
-  const time = useSelector((root: RootState) => root.FirstSlice.time);
+  const [timeNow, setTimeNow] = React.useState<string>(String(getTimeNow()));
   const [flag, useFlag] = React.useState<boolean>(true);
-  
+  const [timeNowSecond, setTimeNowSecond] = React.useState<string>(
+    String(getTimeNow())
+  );
   function func() {
     useFlag(false);
-    dispatch(timeNow());
+    setTimeNowSecond(getTimeNow());
   }
   return (
     <tbody>
       <tr>
-        <th>{userList[Number(valueInput)][Number(userChosen) - 1]}</th>
+        <th>{userList[Number(valueInput)][Number(selectedUser) - 1]}</th>
         <th>{valueInput}</th>
-        <th>{time}</th>
+        <th>{timeNow}</th>
         <th>
-          {flag ? <button onClick={func}>fini</button> : <span>{time}</span>}
+          {flag ? (
+            <button onClick={func}>fini</button>
+          ) : (
+            <span>{timeNowSecond}</span>
+          )}
         </th>
       </tr>
     </tbody>

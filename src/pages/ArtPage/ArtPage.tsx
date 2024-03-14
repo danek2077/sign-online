@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { chosenUserData, inputHandler } from "./features/hooks/CustomArtPage";
+import { inputHandler } from "./features/hooks/CustomArtPage";
 import { UserListType } from "./features/types/typeArtPage";
 import TodoNomList from "./features/childElems/TodoNomList";
 import NewUserTable from "./features/childElems/NewUserTable";
@@ -9,7 +9,6 @@ import { RootState } from "../../store/store";
 const ArtPage = () => {
   const flag = useSelector((root: RootState) => root.FirstSlice.flag);
   const { changeFunc, valueInput } = inputHandler();
-  const { userChosen } = chosenUserData();
   const [chooseList, setChooseList] = React.useState<string[]>([""]);
   const userList: UserListType = {
     1: ["Vladimir", "Xavier", "Alex"],
@@ -48,9 +47,7 @@ const ArtPage = () => {
             <th>12/03 21:00</th>
           </tr>
         </tbody>
-        {flag && (
-          <NewUserTable valueInput={valueInput} userList={userList}/>
-        )}
+        {flag && <NewUserTable valueInput={valueInput} userList={userList} />}
       </table>
     </div>
   );

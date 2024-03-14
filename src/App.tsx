@@ -4,12 +4,10 @@ import HomePage from "./pages/HomePage";
 import React from "react";
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/art" element={<ArtPage />}></Route>
-        <Route path="/" element={<HomePage />}></Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/art" element={<ArtPage />}></Route>
+      <Route path="/" element={<HomePage />}></Route>
+    </Routes>
   );
 }
 

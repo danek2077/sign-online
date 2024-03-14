@@ -1,12 +1,14 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
-const initialState: { flag: boolean; time: string; userChosen: number | null } =
-  {
-    flag: false,
-    time: "",
-    userChosen: null,
-  };
+const initialState: {
+  flag: boolean;
+  time: string;
+  selectedUser: number | null;
+} = {
+  flag: false,
+  time: "",
+  selectedUser: null,
+};
 
 export const FirstSlice = createSlice({
   name: "counter",
@@ -15,20 +17,13 @@ export const FirstSlice = createSlice({
     changeFlag: (state) => {
       state.flag = true;
     },
-    timeNow: (state) => {
-      const now = new Date();
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const rez = `13/03 ${hours}:${minutes}`;
-      state.time = rez;
-    },
     userNumberChange: (state, action: PayloadAction<number>) => {
-      state.userChosen = action.payload;
+      state.selectedUser = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { changeFlag, timeNow, userNumberChange } = FirstSlice.actions;
+export const { changeFlag,  userNumberChange } = FirstSlice.actions;
 
 export default FirstSlice.reducer;
