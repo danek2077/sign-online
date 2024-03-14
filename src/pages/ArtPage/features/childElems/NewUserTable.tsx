@@ -2,7 +2,6 @@ import React from "react";
 import { UserListType } from "../types/typeArtPage";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
-import { useDispatch } from "react-redux";
 import { getTimeNow } from "../hooks/CustomArtPage";
 
 const NewUserTable: React.FC<{
@@ -12,7 +11,7 @@ const NewUserTable: React.FC<{
   const selectedUser = useSelector(
     (root: RootState) => root.FirstSlice.selectedUser
   );
-  const [timeNow, setTimeNow] = React.useState<string>(String(getTimeNow()));
+  const [timeNow] = React.useState<string>(String(getTimeNow()));
   const [flag, useFlag] = React.useState<boolean>(true);
   const [timeNowSecond, setTimeNowSecond] = React.useState<string>(
     String(getTimeNow())

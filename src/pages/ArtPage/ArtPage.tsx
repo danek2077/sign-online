@@ -23,6 +23,7 @@ const ArtPage = () => {
       <Link to="/">RENTRER</Link>
       <br />
       <br />
+      <div>try number 1 or 2 or 3</div>
       <input value={valueInput} onChange={changeFunc} size={1} type="text" />
       <button onClick={buttonRequest}>request</button>
       <br />
