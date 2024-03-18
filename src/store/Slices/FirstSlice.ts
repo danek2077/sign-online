@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export type TodoUserType = { name: string; roomNum: number };
 const initialState: {
-  time: string;
+
   selectedUser: number | null;
   todoUsers: TodoUserType[];
 } = {
-  time: "",
+
   selectedUser: null,
   todoUsers: [],
 };
