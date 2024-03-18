@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 export const inputHandler = () => {
-  const [valueInput, setValueInput] = React.useState<number | string>("");
+  const [valueInput, setValueInput] = React.useState<string>('');
   const changeFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValueInput(Number(e.target.value));
+    setValueInput(e.target.value);
   };
   return { valueInput, setValueInput, changeFunc };
 };
@@ -20,6 +20,9 @@ export const getTimeNow = () => {
   }
   if (Number(seconds) < 10) {
     seconds = "0" + seconds;
+  }
+  if(Number(month) < 10){
+    month = "0" + month
   }
   const rez = `${day}/${month} ${hours}:${minutes}:${seconds}`;
   return rez;

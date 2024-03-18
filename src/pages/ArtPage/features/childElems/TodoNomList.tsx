@@ -1,33 +1,43 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-type TodoNomPropsType = { chooseList: string[] };
-const TodoNomList: React.FC<TodoNomPropsType> = ({ chooseList }) => {
+import { TodoUserType, addTodoUser } from "../../../../store/Slices/FirstSlice";
+type TodoNomPropsType = {
+  chooseList: string[];
+  valueInput: string;
+  setChooseList: React.Dispatch<React.SetStateAction<string[]>>;
+};
+const TodoNomList: React.FC<TodoNomPropsType> = ({
+  chooseList,
+  valueInput,
+  setChooseList,
+}) => {
+  const [alreadyChosenNum, setAlreadeChosenNum] = React.useState<number>(0);
   const dispatch = useDispatch();
-  function func(key: number) {
-    console.log(key);
+
+  function func() {
+    const result: TodoUserType = {
+      name: chooseList[alreadyChosenNum],
+      roomNum: Number(valueInput),
+    };
+    dispatch(addTodoUser(result));
+    setChooseList([""]);
   }
-  if(!chooseList){
-    return(<div>ERROR: roomNumber don't exist, try another room</div>)
-  }
+
   return (
     <div>
-      {chooseList[0]
-        ? chooseList.map((el, key) => (
-            <div key={key}>
-              <input
-                type="radio"
-                onClick={() => func(key)}
-                name="drone"
-                value={el}
-              />
-              <label htmlFor={el}>{el}</label>
-            </div>
-          ))
-        : ""}
-
-      {chooseList[0] ? <button>set</button> : ""}
+      {chooseList.map((el, key) => (
+        <div key={key}>
+          <input
+            type="radio"
+            onClick={() => setAlreadeChosenNum(key)}
+            name="drone"
+            value={el}
+          />
+          <label htmlFor={el}>{el}</label>
+        </div>
+      ))}
+      {chooseList[0] ? <button onClick={func}>set</button> : ""}
     </div>
   );
 };
-
 export default TodoNomList;

@@ -7,6 +7,9 @@ import NewUserTable from "./features/childElems/NewUserTable";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 const ArtPage = () => {
+  const todoUsers = useSelector(
+    (state: RootState) => state.FirstSlice.todoUsers
+  );
   const { changeFunc, valueInput } = inputHandler();
   const [chooseList, setChooseList] = React.useState<string[]>([""]);
   const roomUsersList: UserListType = {
@@ -15,7 +18,7 @@ const ArtPage = () => {
     3: ["Danek", "Vadim", "Master"],
   };
   const buttonRequest = () => {
-      setChooseList(roomUsersList[Number(valueInput)]);
+    setChooseList(roomUsersList[Number(valueInput)]);
   };
   return (
     <div>
@@ -27,7 +30,17 @@ const ArtPage = () => {
       <button onClick={buttonRequest}>request</button>
       <br />
       <br />
-      <TodoNomList chooseList={chooseList} />
+      {chooseList ? (
+        chooseList[0] && (
+          <TodoNomList
+            chooseList={chooseList}
+            valueInput={valueInput}
+            setChooseList={setChooseList}
+          />
+        )
+      ) : (
+        <div>ERROR: cannot find roomNUM</div>
+      )}
       <br />
       <br />
       <table border={1}>
@@ -47,6 +60,9 @@ const ArtPage = () => {
             <th>12/03 21:00:54</th>
           </tr>
         </tbody>
+        {todoUsers.map((el, key) => (
+          <NewUserTable key={key} valueInput={el.name} roomNum={el.roomNum} />
+        ))}
       </table>
     </div>
   );

@@ -1,10 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-type TodoUsersType = { name: string; roomNum: number };
+export type TodoUserType = { name: string; roomNum: number };
 const initialState: {
-  
   time: string;
   selectedUser: number | null;
-  todoUsers: TodoUsersType[];
+  todoUsers: TodoUserType[];
 } = {
   time: "",
   selectedUser: null,
@@ -18,10 +17,17 @@ export const FirstSlice = createSlice({
     userNumberChange: (state, action: PayloadAction<number>) => {
       state.selectedUser = action.payload;
     },
+    addTodoUser: (state, action: PayloadAction<TodoUserType>) => {
+      if (Boolean(state.todoUsers[0]) === false) {
+        state.todoUsers[0] = action.payload;
+      } else {
+        state.todoUsers.push(action.payload);
+      }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { userNumberChange } = FirstSlice.actions;
+export const { userNumberChange, addTodoUser } = FirstSlice.actions;
 
 export default FirstSlice.reducer;
