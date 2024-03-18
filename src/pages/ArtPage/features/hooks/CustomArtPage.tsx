@@ -1,20 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeFlag } from "../../../../store/Slices/FirstSlice";
 export const inputHandler = () => {
   const [valueInput, setValueInput] = React.useState<number | string>("");
   const changeFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueInput(Number(e.target.value));
   };
   return { valueInput, setValueInput, changeFunc };
-};
-
-export const chosenUserData = () => {
-  const dispatch = useDispatch();
-  function booleanUserChosen() {
-    dispatch(changeFlag());
-  }
-  return { booleanUserChosen };
 };
 
 export const getTimeNow = () => {

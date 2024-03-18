@@ -7,16 +7,15 @@ import NewUserTable from "./features/childElems/NewUserTable";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 const ArtPage = () => {
-  const flag = useSelector((root: RootState) => root.FirstSlice.flag);
   const { changeFunc, valueInput } = inputHandler();
   const [chooseList, setChooseList] = React.useState<string[]>([""]);
-  const userList: UserListType = {
+  const roomUsersList: UserListType = {
     1: ["Vladimir", "Xavier", "Alex"],
     2: ["Vika", "biba"],
     3: ["Danek", "Vadim", "Master"],
   };
   const buttonRequest = () => {
-    setChooseList(userList[Number(valueInput)]);
+      setChooseList(roomUsersList[Number(valueInput)]);
   };
   return (
     <div>
@@ -34,21 +33,20 @@ const ArtPage = () => {
       <table border={1}>
         <thead>
           <tr>
-            <th>NOM</th>
-            <th>CHAMBRE</th>
-            <th>COMMMENCER</th>
-            <th>FINI</th>
+            <th>NAME</th>
+            <th>RoomNUM</th>
+            <th>BEGIN</th>
+            <th>FINISH</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th>Daniel Stanislaw</th>
             <th>73</th>
-            <th>12/03 20:00</th>
-            <th>12/03 21:00</th>
+            <th>12/03 20:00:32</th>
+            <th>12/03 21:00:54</th>
           </tr>
         </tbody>
-        {flag && <NewUserTable valueInput={valueInput} userList={userList} />}
       </table>
     </div>
   );
