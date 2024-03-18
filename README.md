@@ -1,34 +1,11 @@
-<<<<<<< HEAD
-# sign-online
-=======
-# React + TypeScript + Vite
+Context of the situation:
+I am in France, and I decided to create this project to try to fight bureaucracy. I am currently living in a residence and we have special rooms, to get access you have to sign your name, the room, the date and only then you get the key to the room. When you finish using the room, you have to write the date and return the key. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My idea was to simplify the process, to do it all online instead of on paper.
+The advantages of my idea:
+1) Many times faster, just a couple of clicks.
+2) You don't have to print paper all the time
+3) My services are absolutely free
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
->>>>>>> e0b6ead (Project initialazation)
+But unfortunately French bureaucracy defeated me and my project was not accepted at the "presentation". Maybe my credibility is low, maybe something else they didn't like, I don't know. It was frustrating, but whatever
+I did this project with pleasure, I was invigorated by the thought that perhaps my product will be used by hundreds of people
