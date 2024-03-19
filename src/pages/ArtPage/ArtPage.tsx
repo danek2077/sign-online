@@ -29,7 +29,13 @@ const ArtPage = () => {
       <Link to="/">RENTRER</Link>
       <br />
       <br />
-      <input value={valueInput} onChange={changeFunc} size={1} type="text" />
+      <input
+        value={valueInput}
+        onChange={changeFunc}
+        placeholder="RoomNUM"
+        size={6}
+        type="text"
+      />
       <button onClick={buttonRequest}>request</button>
       <br />
       <br />
