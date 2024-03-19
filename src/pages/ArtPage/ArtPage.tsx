@@ -17,15 +17,18 @@ const ArtPage = () => {
     2: ["Vika", "biba"],
     3: ["Danek", "Vadim", "Master"],
   };
+  const sumRoomUsersList = React.useRef<null | number>(null);
+  console.log("rerender");
   const buttonRequest = () => {
     setChooseList(roomUsersList[Number(valueInput)]);
+    sumRoomUsersList.current = Number(valueInput);
+    console.log(sumRoomUsersList.current);
   };
   return (
     <div>
       <Link to="/">RENTRER</Link>
       <br />
       <br />
-      <div>try number 1 or 2 or 3</div>
       <input value={valueInput} onChange={changeFunc} size={1} type="text" />
       <button onClick={buttonRequest}>request</button>
       <br />
@@ -39,7 +42,10 @@ const ArtPage = () => {
           />
         )
       ) : (
-        <div>ERROR: cannot find roomNUM</div>
+        <div>
+          ERROR: cannot find roomNUM "{sumRoomUsersList.current}" <br /> try to
+          use from 1 to {Object.keys(roomUsersList).length}
+        </div>
       )}
       <br />
       <br />

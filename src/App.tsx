@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import ArtPage from "./pages/ArtPage/ArtPage";
 import HomePage from "./pages/HomePage";
-import React from "react";
 function App() {
   return (
     <Routes>
